@@ -1,7 +1,7 @@
 {
-  "name": "pitchfork-child-theme",
-  "version": "0.1.0",
-  "description": "A starter child-theme for Pitchfork from ASU Engineering",
+  "name": "pitchfork-lth",
+  "version": "0.2.0",
+  "description": "The Learning and Teaching child theme for Pitchfork. (Maintained by ASU Engineering.)",
   "repository": "asuengineering/pitchfork-child",
   "main": ".eslintrc.js",
   "author": "ASUEngineering",
