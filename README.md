@@ -31,11 +31,12 @@ A small script to lint the codebase is also included via `composer`. It utilizes
 - Use `composer check:cs` to lint the plugin files.
 - Use `composer fix:cs` to fix the problems that it can address automatically.
 
-## Block Settings
-
-<hr>
-
 ## Release Notes
+
+### Version 0.2
+
+- Includes custom post types for a **quick reference guide** and a **learning technology**. Each CPT also has an associated taxonomy for search and filter purposes.
+- Created `single-learning-technology.php` and `single-reference-guide.php` templates for the new custom post types. Included the appropriate tag information in the sidebar display.
 
 ### Version 0.1
 
