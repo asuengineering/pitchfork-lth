@@ -33,6 +33,11 @@ A small script to lint the codebase is also included via `composer`. It utilizes
 
 ## Release Notes
 
+### Version 1.0
+
+- Working version of the theme that was deployed into production in February 2025.
+- Now contains a custom post type for a **series** that can contain multiple types of publications. Supported by `series name` and `series tag` taxonomy collections. Permalink rewrite rules added to include the name of the series in the URL for the post.
+
 ### Version 0.2
 
 - Includes custom post types for a **quick reference guide** and a **learning technology**. Each CPT also has an associated taxonomy for search and filter purposes.
