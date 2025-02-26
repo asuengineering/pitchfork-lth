@@ -298,7 +298,7 @@ function pitchfork_lth_tax_series_type() {
 	);
 	$args = array(
 		'labels'                     => $labels,
-		'hierarchical'               => false,
+		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
@@ -311,21 +311,63 @@ function pitchfork_lth_tax_series_type() {
 }
 add_action( 'init', 'pitchfork_lth_tax_series_type', 0 );
 
+// Register Custom Taxonomy
+function pitchfork_lth_tax_series_tags() {
+
+	$labels = array(
+		'name'                       => _x( 'Series Tags', 'Taxonomy General Name', 'pitchfork_lth' ),
+		'singular_name'              => _x( 'Series Tag', 'Taxonomy Singular Name', 'pitchfork_lth' ),
+		'menu_name'                  => __( 'Series Tag', 'pitchfork_lth' ),
+		'all_items'                  => __( 'All Tags', 'pitchfork_lth' ),
+		'parent_item'                => __( 'Parent tag', 'pitchfork_lth' ),
+		'parent_item_colon'          => __( 'Parent tag:', 'pitchfork_lth' ),
+		'new_item_name'              => __( 'New Tag Name', 'pitchfork_lth' ),
+		'add_new_item'               => __( 'Add New Tag', 'pitchfork_lth' ),
+		'edit_item'                  => __( 'Edit Tag', 'pitchfork_lth' ),
+		'update_item'                => __( 'Update Tag', 'pitchfork_lth' ),
+		'view_item'                  => __( 'View Tag', 'pitchfork_lth' ),
+		'separate_items_with_commas' => __( 'Separate tags with commas', 'pitchfork_lth' ),
+		'add_or_remove_items'        => __( 'Add or remove tags', 'pitchfork_lth' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'pitchfork_lth' ),
+		'popular_items'              => __( 'Popular Tags', 'pitchfork_lth' ),
+		'search_items'               => __( 'Search Tags', 'pitchfork_lth' ),
+		'not_found'                  => __( 'Not Found', 'pitchfork_lth' ),
+		'no_terms'                   => __( 'No tags', 'pitchfork_lth' ),
+		'items_list'                 => __( 'Tags list', 'pitchfork_lth' ),
+		'items_list_navigation'      => __( 'Tags list navigation', 'pitchfork_lth' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => false,
+		'show_tagcloud'              => false,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'series-tags', array( 'series' ), $args );
+
+}
+add_action( 'init', 'pitchfork_lth_tax_series_tags', 0 );
+
 /**
 * Rewrite rules for series CPT. Uses series_type taxonomy term in the link.
 */
+
+add_filter('post_type_link', 'pitchfork_lth_series_permalink', 10, 2);
 function pitchfork_lth_series_permalink($permalink, $post) {
     if ($post->post_type !== 'series') {
-           return $permalink;
-       }
+        return $permalink;
+    }
 
-       // Get the first assigned 'series_type' term
-       $terms = get_the_terms($post->ID, 'series-type');
+    // Get the first assigned 'series_type' term
+    $terms = get_the_terms($post->ID, 'series-type');
 
-       if ($terms && !is_wp_error($terms)) {
-           return str_replace('%series-type%', $terms[0]->slug, $permalink);
-       }
+    if ($terms && !is_wp_error($terms)) {
+		return str_replace('%series-type%', $terms[0]->slug, $permalink);
+	}
 
-       return str_replace('%series-type%', 'unassigned', $permalink); // Default if no term
-   }
-add_filter('post_type_link', 'pitchfork_lth_series_permalink', 10, 2);
+    return str_replace('%series-type%', 'unassigned', $permalink); // Default if no term
+}
+
