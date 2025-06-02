@@ -245,7 +245,7 @@ function pitchfork_lth_cpt_series() {
 		'label'                 => __( 'Series', 'pitchfork_lth' ),
 		'description'           => __( 'A series hosted by LTH', 'pitchfork_lth' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'revisions', 'excerpt' ),
 		'taxonomies'            => array( 'series_type' ),
 		'hierarchical'          => false,
 		'public'                => true,
