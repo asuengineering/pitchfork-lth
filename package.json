@@ -1,6 +1,6 @@
 {
   "name": "pitchfork-lth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The Learning and Teaching Hub child theme for Pitchfork. (Maintained by ASU Engineering.)",
   "repository": "asuengineering/pitchfork-child",
   "main": ".eslintrc.js",

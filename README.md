@@ -33,6 +33,10 @@ A small script to lint the codebase is also included via `composer`. It utilizes
 
 ## Release Notes
 
+### Version 1.0.1
+
+- FIX: Added missing support for excerpt for `series` custom post type.
+
 ### Version 1.0
 
 - Working version of the theme that was deployed into production in February 2025.
